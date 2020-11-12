@@ -1,0 +1,130 @@
+$main_desktop_width_2columns: 75%;
+$sidebar_desktop_width_2columns: 25%;
+$sidebar_desktop_gutter_2columns: 5%;
+
+/* 3 columns layout */
+$main_desktop_width_3columns: 60%;
+$sidebar_desktop_width_3columns: 20%;
+$sidebar_desktop_gutter_3columns: 5%;
+
+/*
+ * 2-columns-left layout
+ */
+.page-layout-2columns-left,
+.page-layout-2columns-right {
+    & .columns {
+        lost-flex-container: column;
+    }
+
+    & .column {
+        order: 1;
+    }
+
+    & .sidebar {
+        order: 0;
+    }
+
+    @media (--large) {
+        & .columns {
+            display: block;
+            @mixin clearfix;
+        }
+
+        & .column {
+            width: $main_desktop_width_2columns;
+            display: inline-block;
+        }
+
+        & .sidebar {
+            display: inline-block;
+            width: $sidebar_desktop_width_2columns;
+        }
+    }
+}
+
+.page-layout-2columns-left {
+    @media (--large) {
+        & .column {
+            float: right;
+        }
+
+        & .sidebar {
+            float: left;
+            padding-right: $sidebar_desktop_gutter_2columns;
+        }
+    }
+}
+
+.page-layout-2columns-right {
+    @media (--large) {
+        & .column {
+            float: left;
+        }
+
+        & .sidebar {
+            float: right;
+            padding-left: $sidebar_gutter;
+        }
+    }
+}
+
+.page-layout-3columns {
+    @media (--large) {
+        & .columns {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        & .column-main {
+            order: 2;
+            flex: 1 1 $main_desktop_width_3columns;
+            padding: 0 $sidebar_desktop_gutter_3columns;
+            min-width: 0;
+            margin: 0 auto;
+        }
+
+        & .sidebar {
+            flex: 1 1 $sidebar_desktop_width_3columns;
+        }
+
+        & .sidebar-main {
+            order: 1;
+        }
+
+        & .sidebar-additional {
+            order: 3;
+        }
+    }
+}
+
+#checkout {
+    & .columns {
+        @mixin flex row, flex-start, flex-start, wrap;
+
+        & .column-main {
+            order: 1;
+            width: 100%;
+        }
+
+        & .sidebar-main {
+            order: 0;
+            width: 100%;
+        }
+    }
+
+    @media (--large) {
+        & .columns {
+            @mixin marginTrailer 1, $breakpoint-1024px;
+
+            & .column-main {
+                lost-column: 8/12 3 48px;
+                order: 0;
+            }
+
+            & .sidebar-main {
+                lost-column: 4/12 1 48px;
+                order: 1;
+            }
+        }
+    }
+}

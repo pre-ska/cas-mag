@@ -1,0 +1,95 @@
+.styles-striped {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.action {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.action {
+    &.primary,
+    &.secondary {
+        display: inline-block;
+        font-weight: 300;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+        @mixin adjustFontSize 12px, 1;
+        @mixin rhythmBorders 0px, 0.5, solid;
+        @mixin ui-default-transition background;
+        padding-left: pxtorem(12px);
+        padding-right: pxtorem(12px);
+        border-radius: pxtorem(3px);
+        text-align: center;
+
+        @media (--medium) {
+            @mixin rhythmBorders 0px, 0.5, solid, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin rhythmBorders 0px, 0.5, solid, $breakpoint-1024px;
+        }
+    }
+
+    &.primary {
+        color: var(--color__white);
+        background: var(--theme__color__CTA);
+        border-color: var(--theme__color__CTA);
+
+        &:hover {
+            background: var(--theme__color__CTA_hover);
+        }
+    }
+
+    &.secondary {
+        color: var(--theme__color__secondary);
+        background: var(--color__white);
+    }
+
+    &.subscribe {
+        border-color: var(--color__white);
+        width: 100%;
+
+        @media (--medium) {
+            width: auto;
+        }
+    }
+}
+
+.ui-close {
+    width: 100%;
+    @mixin rhythm 1, 1, 0, 0;
+    text-align: right;
+    border: none;
+    background: transparent;
+    outline: 0;
+    @mixin flex row, center, flex-end, wrap;
+    @mixin ui-default-transition color;
+    cursor: pointer;
+
+    &::after {
+        content: "\e91b";
+        font-family: "icomoon";
+        margin-left: pxtorem(8px);
+    }
+
+    &:hover {
+        color: var(--theme__color__secondary);
+    }
+
+    @media (--medium) {
+        @mixin rhythm 1, 1, 0, 0, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin rhythm 1, 1, 0, 0, $breakpoint-1024px;
+    }
+}

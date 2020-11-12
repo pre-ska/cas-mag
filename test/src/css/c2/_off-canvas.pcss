@@ -1,0 +1,194 @@
+@media (--off__canvas) {
+    .section-item-content {
+        order: 1;
+        width: 100%;
+    }
+
+    .nav-toggle {
+        order: 3;
+        padding-right: 0;
+    }
+
+    .nav-sections {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        top: 0;
+        left: 0;
+        transform: translate3D(-100%, 0, 0);
+        transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+        background: var(--color__white);
+        z-index: 3;
+    }
+
+    .nav-open {
+        & body {
+            overflow: hidden;
+        }
+
+        & .nav-sections {
+            transform: translate3D(0, 0, 0);
+        }
+    }
+
+    .nav-sections-items {
+        @mixin flex row, center, stretch, wrap;
+    }
+
+    .main-nav-canvas-close {
+        width: 100%;
+        display: block;
+        text-align: right;
+        @mixin rhythm 0, 0, 2, 2;
+        padding-right: 1.6rem;
+        color: var(--theme__color__primary);
+    }
+
+    .section-item-title {
+        order: 0;
+        flex: 1 1 auto;
+        text-transform: uppercase;
+        background: var(--theme__color__primary__lighter);
+        letter-spacing: 0.175rem;
+
+        &.active {
+            background: var(--color__white);
+        }
+    }
+
+    .nav-sections-item-switch {
+        color: var(--theme__color__primary);
+        text-decoration: none;
+        display: block;
+        @mixin rhythm 1, 1, 0, 0;
+        text-align: center;
+    }
+
+    .navigation {
+        @mixin rhythm 2, 2, 0, 0;
+    }
+
+    .navigation a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-transform: uppercase;
+        color: var(--theme__color__primary);
+
+        /*padding: 0 1.6rem;*/
+
+        &.opened {
+            color: var(--theme__color__secondary);
+        }
+    }
+
+    li.level-top {
+        padding: 0 1.6rem;
+
+        & a.level-top {
+            @mixin rhythmBorders 1px, 0.5, solid;
+            border-color: transparent transparent var(--theme__color__primary);
+        }
+
+        &.parent {
+            & a.level-top {
+                &.opened {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+
+    a.level-top {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        padding: 0;
+        @mixin adjustFontSize 12px, 1;
+    }
+
+    .parent {
+        & a.level-top {
+            &::after {
+                font-family: 'icomoon';
+                content: "\e901";
+                @mixin ui-default-transition transform;
+                vertical-align: middle;
+                float: right;
+            }
+        }
+
+        &.opened {
+            & a.level-top {
+                &::after {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    .submenu {
+        max-height: 0;
+        overflow: hidden;
+        @mixin ui-default-transition max-height;
+    }
+
+    .opened {
+        & > .submenu {
+            max-height: 120rem;
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+
+        & > a {
+            color: var(--theme__color__secondary);
+        }
+    }
+
+    li.level1 a {
+        text-decoration: none;
+        @mixin adjustFontSize 12px, 1;
+        @mixin rhythm 0.25, 0.25, 0, 0;
+    }
+
+    li.level1.parent > a {
+        &::before {
+            font-family: "icomoon";
+            content: "\e91a";
+            margin-right: 1.2rem;
+        }
+
+        &.opened > a {
+            &::before {
+                content: "\e919";
+            }
+        }
+    }
+
+    li.level2 a {
+        padding-left: 2.2rem;
+    }
+
+    ul.level0 {
+        & + .view-all {
+            position: relative;
+
+            &::after {
+                content: "";
+                width: 100%;
+                height: 1px;
+                display: block;
+                background: var(--secondary__color__light);
+                margin: 2.4rem auto 1.2rem;
+            }
+        }
+    }
+
+    li.level1 {
+        & .view-all {
+            padding-left: 3.2rem;
+        }
+    }
+}

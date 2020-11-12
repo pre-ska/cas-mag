@@ -1,0 +1,59 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="wish-list-link" remove="true" />
+        <referenceBlock name="compare-products-link" remove="true" />
+        <!-- Header Mainbar -->
+
+        <container name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="header-mainbar header-mainbar--default">
+            <!-- Header Search -->
+            <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" after="logo"/>
+            <!-- Header Interactive Area: User Login, Minicart -->
+            <container name="header-wrapper" label="Page Header" as="header-wrapper" htmlTag="div" htmlClass="header-interactive" after="-">
+
+                <container name="top-links-wrapper" htmlTag="div" htmlClass="top-links__wrapper js-toggle__wrapper">
+                    <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/links/top-links-trigger.phtml" name="top.links.trigger" before="top.links" />
+                    <block class="Magento\Customer\Block\Account\Navigation" name="top.links">
+                        <arguments>
+                            <argument name="css_class" xsi:type="string">header links header__links js-toggle__content js-toggle__content--animated positioned--right</argument>
+                        </arguments>
+                    </block>
+                    <!--                    <block class="Magento\Framework\View\Element\Template"-->
+                    <!-- template="Magento_Theme::html/header/links/top-links-js.phtml"-->
+                    <!-- name="top.links.js" />-->
+                </container>
+                <container name="toggle.overlay" htmlTag="div" htmlClass="overlay js-toggle__overlay" after="-">
+                    <block class="Magento\Framework\View\Element\Text">
+                        <arguments>
+                            <argument name="text" xsi:type="string"><![CDATA[&nbsp;]]></argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </container>
+
+        <referenceBlock name="header">
+            <arguments>
+                <argument name="show_part" xsi:type="string">other</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+            <block name="customer.customer.data" class="Magento\Customer\Block\CustomerData" template="Magento_Customer::js/customer-data.phtml"/>
+        </referenceContainer>
+        <move element="header.panel" destination="header.container" before="-"/>
+        <move element="logo" destination="header.panel" before="-"/>
+        <!-- Header Navbar -->
+        <container name="header.navigation" label="Page Header Panel" htmlTag="div" htmlClass="header-navbar header-navbar--default">
+            <container name="main.navigation" htmlClass="container" htmlTag="div"/>
+        </container>
+        <move element="header.navigation" destination="header.container" after="-"/>
+        <move element="navigation.sections" destination="main.navigation" before="-"/>
+
+        <move element="currency" destination="header-wrapper" before="-" />
+        <move element="store_language" destination="header-wrapper" after="currency" />
+
+        <!-- code cleanup in offcanvas -->
+        <referenceBlock name="store.settings.currency" remove="true" />
+        <referenceBlock name="store.settings.language" remove="true" />
+    </body>
+</page>

@@ -1,0 +1,119 @@
+.page.messages {
+    @mixin marginTrailer 1;
+
+    @media (--medium) {
+        @mixin marginTrailer 1, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin marginTrailer 1, $breakpoint-1024px;
+    }
+
+    & .message {
+        @mixin rhythmBorders 1px, 0.5, solid;
+        text-align: center;
+        position: relative;
+        background: transparent;
+
+        & a {
+            text-decoration: none;
+        }
+
+        & > div {
+            padding-right: 3.6rem;
+
+            &::after {
+                font-family: 'icomoon';
+                margin-left: 1.6rem;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0.8rem;
+            }
+        }
+
+        @media (--medium) {
+            @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-1024px;
+        }
+    }
+
+    & .success {
+        color: var(--messages__success);
+        border-color: var(--messages__success);
+
+        & > div {
+            &::after {
+                content: "\e922";
+            }
+        }
+    }
+
+    & .error {
+        color: var(--messages__error);
+        border-color: var(--messages__error);
+
+        & > div {
+            &::after {
+                content: "\e91d";
+            }
+        }
+    }
+
+    & .notice,
+    & .info {
+        color: var(--messages__notice);
+        border-color: var(--messages__notice);
+
+        & > div {
+            &::after {
+                content: "\e91c";
+            }
+        }
+    }
+}
+
+.message {
+    @mixin rhythm 0.5, 0.5, 0, 0;
+    color: var(--color__white);
+
+    &.notice {
+        background: var(--messages__notice);
+    }
+
+    &.error {
+        background: var(--messages__error);
+    }
+
+    &.success {
+        background: var(--messages__success);
+    }
+
+    &.info {
+        @mixin rhythmBorders 1px, 0.5, solid;
+        color: var(--messages__notice);
+        border-color: var(--messages__notice);
+        text-align: center;
+        position: relative;
+        background: transparent;
+
+        @media (--medium) {
+            @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-1024px;
+        }
+    }
+
+    @media (--medium) {
+        @mixin rhythm 0.5, 0.5, 0, 0, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin rhythm 0.5, 0.5, 0, 0, $breakpoint-1024px;
+    }
+}

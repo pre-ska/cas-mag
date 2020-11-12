@@ -1,0 +1,217 @@
+.filter-subtitle {
+    @mixin section-title;
+    display: block;
+
+    @mixin marginTrailer 1;
+    @media (--medium) {
+        @mixin marginTrailer 1, $breakpoint-768px;
+    }
+    @media (--large) {
+        @mixin marginTrailer 1, $breakpoint-1024px;
+    }
+}
+
+.filter-current {
+    background-color: var(--theme__color__primary__lighter);
+    padding-left: pxtorem(16px);
+    padding-right: pxtorem(16px);
+    @mixin leadingBorder 5px, 0.5, solid;
+    border-color: var(--theme__color__secondary);
+    @mixin paddingTrailer 0.5;
+    @mixin marginTrailer 0.5;
+    @media(--medium) {
+        @mixin leadingBorder 5px, 0.5, solid, $breakpoint-768px;
+        border-color: var(--theme__color__secondary);
+        @mixin paddingTrailer 0.5, $breakpoint-768px;
+        @mixin marginTrailer 0.5, $breakpoint-768px;
+    }
+    @media(--large) {
+        @mixin leadingBorder 5px, 0.5, solid, $breakpoint-1024px;
+        border-color: var(--theme__color__secondary);
+        @mixin paddingTrailer 0.5, $breakpoint-1024px;
+        @mixin marginTrailer 0.5, $breakpoint-1024px;
+    }
+
+    & .items {
+        @mixin list-reset;
+    }
+    
+    & .item {
+        @mixin adjustFontSize 15px, 1;
+        @media(--medium) {
+            @mixin adjustFontSize 15px, 1, $breakpoint-768px;
+        }
+        @media(--large) {
+            @mixin adjustFontSize 15px, 1, $breakpoint-1024px;
+        }
+    }
+    
+    & .filter-label {
+        display: none;
+    }
+}
+
+.filter-item {
+    position: relative;
+    @mixin ui-default-transition color;
+    padding-left: pxtorem(22px);
+
+    &:hover {
+        color: var(--theme__color__secondary);
+    }
+}
+
+.filter-remove {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.filter-current-subtitle {
+    @mixin section-title;
+    display: block;
+    @mixin adjustFontSize 14px, 1;
+    @mixin marginTrailer 0.5;
+
+    @media (--medium) {
+        @mixin adjustFontSize 15px, 1, $breakpoint-768px;
+        @mixin marginTrailer 0.5, $breakpoint-768px;
+    }
+    @media (--large) {
+        @mixin adjustFontSize 16px, 1, $breakpoint-1024px;
+        @mixin marginTrailer 0.5, $breakpoint-1024px;
+    }
+}
+
+
+.filter-actions {
+    text-align: right;
+    @mixin marginTrailer 1;
+
+    @media (--medium) {
+        @mixin marginTrailer 1, $breakpoint-768px;
+    }
+    @media (--large) {
+        @mixin marginTrailer 1, $breakpoint-1024px;
+    }
+}
+
+.action {
+    &.remove {
+        font-size: 0;
+
+        &::after {
+            font-family: 'icomoon';
+            content: var(--icon__x-circle);
+            @mixin adjustFontSize 14px, 1;
+        }
+    }
+}
+
+.filter-clear {
+    font-weight: 700;
+    display: inline-block;
+    @mixin adjustFontSize 12px, 1;
+    @media (--medium) {
+        @mixin adjustFontSize 12px, 1;
+    }
+    @media (--large) {
+        @mixin adjustFontSize 12px, 1;
+    }
+}
+
+.filter-options-title {
+    @mixin section-title;
+    position: relative;
+    cursor: pointer;
+    @mixin adjustFontSize 12px, 1;
+    @mixin rhythm 0, 0.5, 0, 0.5;
+
+    @media (--medium) {
+        @mixin adjustFontSize 13px, 1, $breakpoint-768px;
+        @mixin rhythm 0, 0.5, 0, 0.5, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin adjustFontSize 14px, 1, $breakpoint-1024px;
+        @mixin rhythm 0, 0.5, 0, 0.5, $breakpoint-1024px;
+    }
+
+    &.active {
+        margin: 0;
+        
+        &::after {
+            transform: rotate(-180deg);
+        }
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        background: var(--theme__color__primary__lighter);
+    }
+
+    &::after {
+        content: var(--icon__chevron__down);
+        font-family: icomoon;
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        @mixin ui-default-transition transform;
+    }
+
+}
+
+.filter-options-content {
+    & .items {
+        @mixin list-reset;
+    }
+
+    & .item {
+        & a {
+            color: var(--theme__color__primary);
+            display: inline-block;
+            padding-right: pxtorem(12px);
+            @mixin rhythm 0.25, 0.25, 0, 0;
+            @mixin adjustFontSize 14px, 1, $breakpoint-1024px;
+
+            @media (--medium) {
+                @mixin adjustFontSize 14px, 1, $breakpoint-1024px;
+                @mixin rhythm 0.25, 0.25, 0, 0, $breakpoint-768px;
+            }
+
+            @media (--large) {
+                @mixin adjustFontSize 14px, 1, $breakpoint-1024px;
+                @mixin rhythm 0.25, 0.25, 0, 0, $breakpoint-1024px;
+            }
+
+            &:hover {
+                color: var(--theme__color__secondary);
+            }
+        }
+
+        & .count {
+            color: var(--theme__color__primary__lighter);
+            margin-left: pxtorem(8px);
+
+            &::before {
+                content: "(";
+            }
+
+            &::after {
+                content: ")";
+            }
+        }
+
+        & .filter-count-label {
+            display: none;
+        }
+    }
+}

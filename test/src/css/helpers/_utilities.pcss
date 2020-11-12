@@ -1,0 +1,34 @@
+.no-scroll {
+    overflow: hidden;
+    height: 100%;
+}
+
+.hidden-m {
+    @media (--medium) {
+        display: none !important;
+    }
+}
+
+.js-toggle__wrapper {
+    position: relative;
+}
+
+.js-toggle__content {
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        z-index: 3;
+    }
+}
+
+.js-toggle__content--animated {
+    position: absolute;
+    top: 100%;
+}
+
+.positioned--right {
+    right: 0;
+}

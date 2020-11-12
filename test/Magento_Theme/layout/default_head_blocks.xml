@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/styles.css"/>
+        <remove src="css/sticky-header.css" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="format-detection" content="telephone=no"/>
+        <link rel="stylesheet" type="text/css" src="https://i.icomoon.io/public/7d8da2f372/UntitledProject1/style.css" src_type="url" />
+        <!-- <link rel="stylesheet" type="text/css" src="https://i.icomoon.io/public/temp/6431ae6003/UntitledProject/style.css" src_type="url"> -->
+    </head>
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Magento\Framework\View\Element\Text" name="medelin_font_headings">
+                <action method="setText">
+                    <argument translate="true" name="text" xsi:type="string">
+                        <![CDATA[<link href="https://fonts.googleapis.com/css?family=Raleway:600&display=swap&subset=latin-ext" rel="stylesheet" src_type="url"/>]]>
+                    </argument>
+                </action>
+            </block>
+            <block class="Magento\Framework\View\Element\Text" name="medelin_font_body">
+                <action method="setText">
+                    <argument translate="true" name="text" xsi:type="string">
+                        <![CDATA[<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet" src_type="url"/>]]>
+                    </argument>
+                </action>
+            </block>
+            <!-- <block class="Magento\Framework\View\Element\Text" name="medelin_font_body">
+                <action method="setText">
+                    <argument translate="true" name="text" xsi:type="string">
+                        <![CDATA[<link href="https://i.icomoon.io/public/7d8da2f372/UntitledProject1/style.css"/>]]>
+</argument>
+</action>
+</block> -->
+        </referenceBlock>
+    </body>
+</page>

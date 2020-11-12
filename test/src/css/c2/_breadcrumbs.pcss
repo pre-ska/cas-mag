@@ -1,0 +1,39 @@
+.breadcrumbs {
+    & .items {
+        display: flex;
+        @mixin container $container-width, $container-gutter;
+        @mixin rhythm 0, 0, 1, 1;
+
+        @media (--medium) {
+            @mixin rhythm 0, 0, 1, 1, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin rhythm 0, 0, 1, 1, $breakpoint-1024px;
+        }
+    }
+
+    & .item {
+        padding-right: 0.5rem;
+        @mixin flex row, center, center, nowrap;
+        @mixin adjustFontSize 12px, 1;
+
+        &:not(:last-child) {
+            &::after {
+                font-family: 'icomoon';
+                content: var(--icon__chevron__right);
+                display: inline-block;
+                vertical-align: middle;
+                @mixin adjustFontSize 10px, 1;
+            }
+        }
+
+        @media (--medium) {
+            @mixin adjustFontSize 12px, 1, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin adjustFontSize 12px, 1, $breakpoint-1024px;
+        }
+    }
+}

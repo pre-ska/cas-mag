@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="3columns"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default_head_blocks"/>
+    <!--
+    /**
+     * To change header layout use update handles:
+     * - ui_header_default; ui_header_v1; or ui_header_v2
+     */
+    -->
+    <update handle="ui_header_v1"/>
+    <body>
+        <referenceBlock name="report.bugs" remove="true" />
+        <referenceBlock name="view.addto.wishlist" remove="true" />
+        <referenceBlock name="catalog.compare.link" remove="true" />
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="catalogsearch.product.addto.compare" remove="true"/>
+        <referenceBlock name="category.product.addto.compare" remove="true"/>
+        <referenceBlock name="crosssell.product.addto.compare" remove="true" />
+        <referenceBlock name="related.product.addto.compare" remove="true" />
+        <referenceBlock name="upsell.product.addto.compare" remove="true" />
+        <referenceBlock name="view.addto.compare" remove="true" />
+        <container name="nav.overlay" htmlTag="div" htmlClass="overlay nav-overlay">
+            <block class="Magento\Framework\View\Element\Text">
+                <arguments>
+                    <argument name="text" xsi:type="string"><![CDATA[&nbsp;]]></argument>
+                </arguments>
+            </block>
+        </container>
+        <move element="nav.overlay" destination="page.wrapper" after="header.container"/>
+        <move element="form.subscribe" destination="newsletter.container" before="-" />
+
+        <!-- <referenceBlock name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_social_links_block">
+                <arguments>
+                    <argument name="block_id" xsi:type="string" translate="true">dth_footer_social_links</argument>
+                </arguments>
+            </block>
+        </referenceBlock> -->
+
+        <!-- <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="dth_footer_social_links">
+                <arguments>
+                    <argument name="label" xsi:type="string">Custom Links</argument>
+                    <argument name="path" xsi:type="string">page-url</argument>
+                </arguments>
+            </block>
+        </referenceBlock> -->
+
+        <referenceContainer name="footer">
+            <referenceBlock name="footer_links" remove="true" />
+            <referenceBlock name="copyright" remove="true" />
+            <block class="Magento\Framework\View\Element\Template" name="footer.navigation.menu" before="-" template="Magento_Theme::footer_menu.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="footer.navigation.description" after="footer.navigation.menu" template="Magento_Theme::footer_description.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="footer.navigation.footer_final" after="footer.navigation.description" template="Magento_Theme::footer_final.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

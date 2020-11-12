@@ -1,0 +1,27 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Header Mainbar -->
+        <container name="header.panel" label="Page Header Panel" htmlTag="div"
+                   htmlClass="header-mainbar header-mainbar--v2">
+            <!-- Header Search -->
+            <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch"
+                   template="Magento_Search::form.mini.phtml" after="logo"/>
+            <!-- Header Interactive Area: User Login, Minicart -->
+            <container name="header-wrapper" label="Page Header" as="header-wrapper" htmlTag="div"
+                       htmlClass="header-interactive" after="-">
+                <container name="top-links-wrapper" htmlTag="div" htmlClass="top-links__wrapper">
+                    <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/links/top-links-trigger.phtml" name="top.links.trigger" before="top.links" />
+                    <block class="Magento\Customer\Block\Account\Navigation" name="top.links">
+                        <arguments>
+                            <argument name="css_class" xsi:type="string">header links header__links js-toggle__content js-toggle__content--animated positioned--right</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </container>
+        <move element="header.panel" destination="header.container" before="-"/>
+        <move element="logo" destination="header.panel" before="-"/>
+        <move element="navigation.sections" destination="header.panel" after="logo"/>
+    </body>
+</page>

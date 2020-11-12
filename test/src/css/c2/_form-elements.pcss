@@ -1,0 +1,273 @@
+.minisearch__input {
+    width: 100%;
+    min-width: 180px;
+    height: pxtorem(24px);
+    border: 0.1rem solid var(--theme__color__secondary);
+}
+
+.fieldset {
+    border: none;
+    padding: 0;
+}
+
+.field {
+    position: relative;
+    @mixin marginTrailer 1;
+
+    @media (--medium) {
+        @mixin marginTrailer 1, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin marginTrailer 1, $breakpoint-1024px;
+    }
+
+    & .label {
+        display: inline-block;
+        @mixin paddingTrailer 0.5;
+
+        @media (--medium) {
+            @mixin paddingTrailer 0.5, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin paddingTrailer 0.5, $breakpoint-1024px;
+        }
+    }
+}
+
+fieldset.field {
+    border: 0;
+    padding: 0;
+}
+
+.fieldset > .field.required > .label:after,
+.fieldset > .fields > .field.required > .label:after,
+.fieldset > .field._required > .label:after,
+.fieldset > .fields > .field._required > .label:after {
+    content: '*';
+    color: var(--messages__error);
+    margin-left: pxtorem(8px);
+}
+
+input.mage-error,
+select.mage-error,
+textarea.mage-error {
+    border-color: var(--messages__error);
+}
+
+.field._error .control input,
+.field._error .control select,
+.field._error .control textarea {
+    border-color: var(--messages__error);
+}
+
+.field-error,
+div.mage-error[generated] {
+    @mixin marginLeader 1;
+    color: var(--messages__error);
+
+    @media (--medium) {
+        @mixin marginLeader 1, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin marginLeader 1, $breakpoint-1024px;
+    }
+}
+
+select,
+.input-text {
+    display: inline-block;
+    width: 100%;
+    height: pxtorem(36px);
+    @mixin adjustLineHeight 1;
+    padding: 0 pxtorem(12px);
+    @mixin marginTrailer 0.5;
+    appearance: none;
+    border-width: pxtorem(1px);
+    border-style: solid;
+    border-color: var(--theme__color__primary__lighter);
+    @mixin ui-default-transition border-color;
+
+    &:focus {
+        outline: none;
+        border-color: var(--theme__color__primary);
+    }
+
+    @media (--medium) {
+        @mixin adjustLineHeight 1, $breakpoint-768px;
+        @mixin marginTrailer 0.25, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        height: pxtorem(42px);
+        @mixin adjustLineHeight 1, $breakpoint-1024px;
+        @mixin marginTrailer 0.25, $breakpoint-1024px;
+    }
+}
+
+.input-text--xxl {
+    @mixin adjustFontSize 14px, 1;
+    @mixin rhythmBorders 1px, 0.5, solid;
+    padding-left: pxtorem(12px);
+    padding-right: pxtorem(12px);
+    border-radius: 1.5rem;
+    height: auto;
+
+    @media (--medium) {
+        @mixin adjustFontSize 14px, 1, $breakpoint-768px;
+        @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-768px;
+        height: auto;
+        min-width: 14rem;
+    }
+
+    @media (--large) {
+        @mixin adjustFontSize 16px, 1, $breakpoint-1024px;
+        @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-1024px;
+        margin-bottom: 0;
+        height: auto;
+    }
+}
+
+.input-text--newsletter {
+    margin-bottom: 0;
+}
+
+.newsletter-label {
+    display: block;
+    color: var(--theme__color__primary__light);
+    @mixin adjustFontSize 10px, 1;
+    @mixin marginTrailer 1;
+
+    @media (--medium) {
+        @mixin adjustFontSize 12px, 1, $breakpoint-768px;
+        @mixin marginTrailer 1, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin adjustFontSize 14px, 1,$breakpoint-1024px;
+        @mixin marginTrailer 1, $breakpoint-1024px;
+    }
+}
+
+textarea {
+    width: 100%;
+    padding: pxtorem(10.5px);
+    @mixin rhythmBorders 1px, 0.5, solid;
+    border-color: var(--theme__color__primary__lighter);
+    @mixin ui-default-transition border-color;
+
+    @media (--medium) {
+        padding: pxtorem(11px);
+        @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-768px;
+        border-color: var(--theme__color__primary__lighter);
+    }
+
+    @media (--large) {
+        padding: pxtorem(12px);
+        @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-1024px;
+        border-color: var(--theme__color__primary__lighter);
+    }
+
+    &:focus {
+        border-color: var(--theme__color__primary);
+    }
+}
+
+select {
+    position: relative;
+    background-image: url("../images/chevron-down.svg");
+    background-position: center right pxtorem(12px);
+    background-size: pxtorem(10px);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    padding-right: pxtorem(24px);
+
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.fieldset > .legend,
+.login-container .block-title  {
+    @mixin section-title;
+    display: block;
+    width: 100%;
+    @mixin adjustFontSize 16px, 1;
+    @mixin marginTrailer 1;
+    @mixin trailingBorder 1px, 1, solid;
+    border-color: var(--theme__color__primary__lighter);
+
+    @media (--medium) {
+        @mixin adjustFontSize 18px, 1, $breakpoint-768px;
+        @mixin trailingBorder 1px, 1, solid, $breakpoint-768px;
+        @mixin marginTrailer 1, $breakpoint-768px;
+        border-color: var(--theme__color__primary__lighter);
+    }
+
+    @media (--large) {
+        @mixin adjustFontSize 20px, 1, $breakpoint-1024px;
+        @mixin trailingBorder 1px, 1, solid, $breakpoint-1024px;
+        @mixin marginTrailer 1, $breakpoint-1024px;
+        border-color: var(--theme__color__primary__lighter);
+    }
+}
+
+.account .column-main .block-title {
+    @mixin trailingBorder 1px, .5, solid;
+    border-color: var(--theme__color__primary__lighter);
+    @mixin marginTrailer 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (--medium) {
+        @mixin trailingBorder 1px, 0.5, solid, $breakpoint-768px;
+        border-color: var(--theme__color__primary__lighter);
+        @mixin marginTrailer 1, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin trailingBorder 1px, 0.5, solid, $breakpoint-1024px;
+        border-color: var(--theme__color__primary__lighter);
+        @mixin marginTrailer 1, $breakpoint-1024px;
+    }
+
+    & strong {
+        @mixin section-title;
+        @mixin adjustFontSize 16px, 1;
+
+        @media (--medium) {
+            @mixin adjustFontSize 18px, 1, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin adjustFontSize 20px, 1, $breakpoint-1024px;
+        }
+    }
+
+    & a {
+        text-decoration: underline;
+    }
+}
+
+@media (--medium) {
+    .form.password.reset,
+    .form.send.confirmation,
+    .form.password.forget,
+    .form.create.account {
+        min-width: 60rem;
+        width: 50%;
+    }
+}

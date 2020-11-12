@@ -1,0 +1,193 @@
+@media (--large) {
+    .view-all {
+        @mixin no-display;
+    }
+
+    .nav-toggle,
+    .section-item-title,
+    .main-nav-canvas-close {
+        display: none;
+    }
+
+    .nav-sections {
+        order: 1;
+    }
+
+    .nav-overlay {
+        z-index: 2;
+        @mixin setRhythmPosition 6, $breakpoint-1024px, top;
+    }
+
+    .navigation-panel {
+        @mixin flex row, stretch, left, wrap;
+        margin-right: auto;
+        order: 0;
+    }
+
+    .navigation {
+        & > .ui-menu {
+            @mixin flex row, center, left, wrap;
+        }
+    }
+
+    .level-top.parent {
+        & .level0.submenu {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            background: #fff;
+            opacity: 0;
+            visibility: hidden;
+            padding: 3.2rem 5.6rem;
+            @mixin flex row, stretch, space-evenly, wrap;
+            transform: scaleY(0);
+            transform-origin: top right;
+            transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+            @mixin setRhythmPosition 6, $breakpoint-1024px, top;
+
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                visibility: visible;
+                transition: background 0.1s ease-in 0.4s, visibility 0.1s 0s;
+                transition-delay: 0.6s;
+            }
+        }
+
+        &.opened {
+            & .level0.submenu {
+                opacity: 1;
+                visibility: visible;
+                transform: scaleY(1);
+
+                &::after {
+                    background: transparent;
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+
+    .submenu {
+        & a {
+            color: var(--theme__color__primary);
+
+            &:hover {
+                color: var(--theme__color__secondary);
+            }
+        }
+    }
+
+    div.ui-menu-item,
+    li.ui-menu-item,
+    li.level0 {
+        @mixin flex row, center, flex-start, wrap;
+        @mixin adjustFontSize 14px, 1, $breakpoint-1024px;
+        text-transform: uppercase;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.--no-margin {
+            margin-right: 0;
+        }
+    }
+
+    li.ui-menu-item,
+    li.level0 {
+        &:hover {
+            color: var(--link__hover__color);
+
+            & > a {
+                color: var(--link__hover__color);
+            }
+        }
+    }
+
+    div.ui-menu-item {
+        transition: color 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+
+        &.opened,
+        &:hover {
+            color: var(--link__hover__color);
+        }
+
+        &.opened {
+            &::after {
+                color: var(--link__hover__color);
+            }
+        }
+    }
+
+    .parent .level-top,
+    .ui-menu-item {
+        &::after {
+            font-family: 'icomoon';
+            content: "\e901";
+            margin-left: 0.6rem;
+            @mixin ui-default-transition transform;
+            vertical-align: middle;
+        }
+
+        &.opened {
+            &::after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .parent .level-top {
+        &:hover {
+            &::after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .parent.opened .level-top {
+        &::after {
+            transform: rotate(180deg);
+        }
+    }
+
+    a.level-top,
+    .ui-menu-item {
+        @mixin flex row, flex-start, center, wrap;
+        margin-right: pxtorem(16px);
+    }
+
+    .level-top {
+        text-decoration: none;
+
+        &:hover {
+            color: inherit;
+        }
+    }
+
+    li.level1 {
+        @mixin flex column, flex-start, flex-start, wrap;
+
+        & > a {
+            text-decoration: none;
+            @mixin section-title;
+            @mixin marginTrailer 1, $breakpoint-1024px;
+        }
+    }
+
+    li.level2 {
+        & a {
+            text-decoration: none;
+        }
+    }
+
+    a.level-top {
+        color: var(--color__white);
+    }
+}

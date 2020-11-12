@@ -1,0 +1,192 @@
+/* --- Minisearch --- */
+
+.block-search {
+    margin-bottom: 0 !important;
+}
+
+.block-search__content {
+    background-color: var(--theme__color__primary);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @mixin rhythm 0, 0, 0, 0;
+
+    @media (--medium) {
+        padding: 2.4rem;
+        @mixin rhythm 1, 1, 0, 0, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin rhythm 1, 1, 0, 0, $breakpoint-1024px;
+    }
+}
+
+.minisearch {
+    @mixin flex column, center, center, wrap;
+    padding: 0 $container-gutter;
+    @mixin rhythm 1, 1, 0, 0;
+
+    @media (--medium) {
+        @mixin flex row, center, center, wrap;
+        @mixin rhythm 1, 1, 0, 0, $breakpoint-768px;
+    }
+
+    @media (--large) {
+        @mixin rhythm 1, 1, 0, 0, $breakpoint-1024px;
+    }
+}
+
+.minisearch__input {
+    background: transparent;
+    color: var(--color__white);
+    margin: 0;
+
+    &:focus {
+        border-color: transparent transparent var(--theme__color__secondary__darken);
+    }
+
+    &::placeholder {
+        color: var(--color__white);
+    }
+
+    @mixin adjustFontSize 14px, 1;
+    @mixin rhythmBorders 1px, 0.5, solid;
+    border-color: transparent transparent var(--theme__color__secondary);
+    padding-left: pxtorem(48px);
+    padding-right: pxtorem(12px);
+    height: auto;
+
+    @media (--medium) {
+        margin: 0;
+        @mixin adjustFontSize 14px, 1, $breakpoint-768px;
+        @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-768px;
+        border-color: transparent transparent var(--theme__color__secondary);
+        height: auto;
+    }
+
+    @media (--large) {
+        @mixin adjustFontSize 16px, 1, $breakpoint-1024px;
+        @mixin rhythmBorders 1px, 0.5, solid, $breakpoint-1024px;
+        border-color: transparent transparent var(--theme__color__secondary);
+        margin-bottom: 0;
+        height: auto;
+    }
+}
+
+.minisearch__action {
+    width: 100%;
+}
+
+.minisearch > .field {
+    width: 100%;
+    @mixin marginTrailer 1;
+    order: 1;
+
+    @media (--medium) {
+        width: 80%;
+        padding-right: 1.2rem;
+        margin-bottom: 0;
+        order: initial;
+    }
+}
+
+.minisearch .actions {
+    @mixin flex row, center, center, wrap;
+
+    @media (--medium) {
+        width: 20%;
+    }
+}
+
+button.search {
+    font-size: 0;
+    border: 0;
+    height: 100%;
+    background-color: transparent;
+    margin-left: -40px;
+}
+
+.block-search__control {
+    position: relative;
+}
+
+.block-search__close {
+    color: var(--color__white);
+    @mixin ui-default-transition color;
+    @mixin marginTrailer 0.5;
+
+    &:hover {
+        color: var(--theme__color__secondary);
+    }
+
+    & span {
+        margin-left: pxtorem(6px);
+    }
+
+    @media (--medium) {
+        margin-bottom: 0;
+    }
+}
+
+.action.minisearch__action {
+    background: transparent;
+    border: none;
+    color: var(--color__white);
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: pxtorem(32px);
+    height: pxtorem(42px,14);
+    padding: 0;
+    @mixin ui-default-transition color;
+
+    &:hover {
+        background: transparent;
+        color: var(--theme__color__secondary);
+    }
+
+    @media (--medium) {
+        border: none;
+    }
+
+    @media (--large) {
+        border: none;
+        height: pxtorem(48px);
+    }
+}
+
+.search-autocomplete {
+    width: 100% !important;
+    height: 30.2rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--color__white);
+    color: var(--theme__color__primary);
+    display: none;
+
+    & li {
+        @mixin flex row, center, flex-start, wrap;
+        padding: $container-gutter;
+        @mixin rhythm 0.5, 0.5, 0, 0;
+        cursor: pointer;
+
+        & .amount {
+            margin-left: auto;
+            font-weight: 700;
+        }
+
+        @media (--medium) {
+            @mixin rhythm 0.5, 0.5, 0, 0, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin rhythm 1, 1, 0, 0, $breakpoint-1024px;
+        }
+    }
+
+    @media (--large) {
+
+    }
+}

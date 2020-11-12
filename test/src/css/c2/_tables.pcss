@@ -1,0 +1,160 @@
+/**
+ * 1. Ensure tables fill up as much space as possible.
+ */
+
+table {
+    width: 100%; /* [1] */
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/**
+ *  Size Guide Table
+ */
+
+.data-table,
+.data.table {
+    text-align: left;
+
+    @media (--medium) {
+        & tr {
+            & th:last-of-type,
+            & td:last-of-type {
+                text-align: right;
+            }
+        }
+    }
+
+    @media (--medium__max) {
+        & colgroup,
+        & thead {
+            display: none;
+        }
+    }
+
+    & .table-caption {
+        @mixin section-title;
+        width: 100%;
+        @mixin trailingBorder 1px, 0.5, solid;
+        border-color: var(--theme__color__primary__lighter);
+        text-align: left;
+    }
+
+    & thead {
+        & tr {
+            border-bottom: 0.1rem solid var(--theme__color__primary__lighter);
+        }
+
+        & th {
+            @mixin adjustFontSize 12px, 1;
+            @mixin paddingTrailer 1;
+            @mixin section-title;
+            padding-left: pxtorem(12px, 15);
+            padding-right: pxtorem(12px, 15);
+
+            @media (--medium) {
+                @mixin adjustFontSize 13px, 1, $breakpoint-768px;
+                @mixin paddingTrailer 1, $breakpoint-768px;
+            }
+
+            @media (--large) {
+                @mixin adjustFontSize 14px, 1, $breakpoint-1024px;
+                @mixin paddingTrailer 1, $breakpoint-1024px;
+            }
+        }
+    }
+
+    & tbody {
+        @mixin adjustFontSize 12px, 1;
+        @mixin paddingTrailer 1;
+
+        @media (--medium) {
+            @mixin adjustFontSize 13px, 1, $breakpoint-768px;
+            @mixin paddingTrailer 1, $breakpoint-768px;
+        }
+
+        @media (--large) {
+            @mixin adjustFontSize 14px, 1, $breakpoint-1024px;
+            @mixin paddingTrailer 1, $breakpoint-1024px;
+        }
+
+        & tr:nth-child(even) {
+            background: var(--theme__color__primary__xlight);
+        }
+
+        & tr {
+            @media (--medium__max) {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                @mixin trailingBorder 1px, 0.5, solid;
+                border-color: var(--theme__color__primary__lighter);
+            }
+        }
+
+        & td {
+            padding-left: pxtorem(12px, 15);
+            padding-right: pxtorem(12px, 15);
+
+            @media (--medium__max) {
+                border: none;
+                text-align: left;
+                @mixin rhythm .5, .5, 0, 0;
+
+                &[data-th] {
+                    &:before {
+                        content: attr(data-th) ":";
+                        font-weight: 700;
+                        margin-right: pxtorem(6px, 15);
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            @media (--medium) {
+                @mixin rhythm .5, .5, 0, 0, $breakpoint-768px;
+            }
+
+            @media (--large) {
+                @mixin rhythm 1, 1, 0, 0, $breakpoint-1024px;
+            }
+        }
+    }
+
+    & tfoot {
+        background: var(--theme__color__primary__xlight);
+
+        @media (--medium__max) {
+            display: block;
+        }
+
+        & tr {
+            & th,
+            & td {
+                padding: 0.8rem 1.6rem;
+            }
+        }
+
+        &.subtotal {
+
+        }
+    }
+}
+
+.data.table {
+    & th {
+        font-weight: normal;
+    }
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (--off__canvas) {
+    .table-wrapper {
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        -webkit-overflow-scrolling: touch;
+    }
+}
